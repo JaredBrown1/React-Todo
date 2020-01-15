@@ -1,6 +1,25 @@
 import React from "react";
 
 import TodoForm from "./components/TodoComponents/TodoForm";
+import Tasks from "./components/TodoComponents/TodoList";
+
+const tasks = [
+  {
+    task: "Sweep floors",
+    id: 1,
+    completed: false
+  },
+  {
+    task: "Bake Cookies",
+    id: 2,
+    completed: false
+  },
+  {
+    task: "Clean Bathroom",
+    id: 3,
+    completed: false
+  }
+];
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -10,16 +29,16 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: ""
+      todoList: tasks
     };
   }
 
-  addNewTask = newItemName => {
+  addNewTask = newTaskName => {
     const newState = {
       ...this.state,
       todoList: [
         ...this.state.todoList,
-        { name: newItemName, completed: false, id: Date.now() }
+        { name: newTaskName, completed: false, id: Date.now() }
       ]
     };
     this.setState(newState);
@@ -28,14 +47,14 @@ class App extends React.Component {
   toggleComplete = id => {
     const newState = {
       ...this.state,
-      todoList: this.state.todoList.map(item => {
-        if (item.id === id) {
+      todoList: this.state.todoList.map(task => {
+        if (task.id === id) {
           return {
-            ...item,
-            completed: !item.completed
+            ...task,
+            completed: !task.completed
           };
         }
-        return item;
+        return task;
       })
     };
     this.setState(newState);
@@ -44,8 +63,8 @@ class App extends React.Component {
   clearCompleted = () => {
     const newState = {
       ...this.state,
-      groceryList: this.state.todoList.filter(item => {
-        return !item.completed;
+      todoList: this.state.todoList.filter(task => {
+        return !task.completed;
       })
     };
     this.setState(newState);
@@ -53,9 +72,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
+      <div className="App">
+        <div>
+          <h2>Welcome to your Todo App!</h2>
+          <TodoForm addNewTask={this.addNewTask} />
+        </div>
+        <Tasks
+          tasks={this.state.todoList}
+          toggleComplete={this.toggleComplete}
+          clearCompleted={this.clearCompleted}
+        />
       </div>
     );
   }
