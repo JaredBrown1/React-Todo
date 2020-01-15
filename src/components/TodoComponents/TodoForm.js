@@ -1,6 +1,6 @@
 import React from "react";
 
-class todoForm extends React.Component {
+class TodoForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,10 +25,12 @@ class todoForm extends React.Component {
           type="text"
           name="item"
           value={this.state.newItem}
+          placeholder="...todo"
         />
+        <button>Add</button>
       </form>
     );
   }
 }
 
-export default todoForm;
+export default TodoForm;
