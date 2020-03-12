@@ -1,15 +1,24 @@
 import React from "react";
 
-const ToDoForm = props => {
-  return (
-    <div>
-      <form>
-        <input type="text" placeholder="task here" />
-        <button>Add</button>
-        <button>delete</button>
-      </form>
-    </div>
-  );
-};
+class ToDoForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      newItem: ""
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <form>
+          <input type="text" name="item" placeholder="task here" />
+          <button>Add</button>
+          <button>delete</button>
+        </form>
+      </div>
+    );
+  }
+}
 
 export default ToDoForm;
