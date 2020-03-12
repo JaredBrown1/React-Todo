@@ -1,8 +1,15 @@
 // your components will all go in this `component` directory.
 // feel free to change this component.js into TodoList.js
 import React from "react";
+import styled from "styled-components";
 
 import ToDo from "./Todo";
+
+const Button = styled.button`
+  :hover {
+    background-color: red;
+  }
+`;
 
 const ToDoList = props => {
   return (
@@ -16,7 +23,7 @@ const ToDoList = props => {
           />
         );
       })}
-      <button onClick={props.clearCompleted}>Clear Completed</button>
+      <Button onClick={props.clearCompleted}>Clear Completed</Button>
     </div>
   );
 };

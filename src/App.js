@@ -1,8 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 
 //components
 import ToDoList from "./components/TodoList";
 import ToDoForm from "./components/TodoForm";
+
+//styles
+const Container = styled.div`
+  text-align: center;
+  margin: 0 auto;
+  background-color: #d6d6d6;
+  max-width: 800px;
+`;
+
+const Title = styled.h2`
+  background-color: black;
+  color: oldlace;
+`;
 
 const data = [
   {
@@ -63,15 +77,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+      <Container>
+        <Title>My Todo List</Title>
         <ToDoForm addNewItem={this.addNewItem} />
         <ToDoList
           data={this.state.itemList}
           toggleCompleted={this.toggleCompleted}
           clearCompleted={this.clearCompleted}
         />
-      </div>
+      </Container>
     );
   }
 }

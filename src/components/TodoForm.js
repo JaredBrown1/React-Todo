@@ -1,5 +1,15 @@
 import React from "react";
 
+import {
+  Container,
+  Col,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button
+} from "reactstrap";
+
 class ToDoForm extends React.Component {
   constructor() {
     super();
@@ -19,18 +29,24 @@ class ToDoForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.newItem}
-            name="item"
-            placeholder="task here"
-          />
-          <button>Add</button>
-        </form>
-      </div>
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
+          <Col>
+            <FormGroup>
+              <Label>New Task</Label>
+              <Input
+                style={{ textAlign: "center" }}
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.newItem}
+                name="item"
+                placeholder="Task Here"
+              />
+            </FormGroup>
+          </Col>
+          <Button>Add</Button>
+        </Form>
+      </Container>
     );
   }
 }
