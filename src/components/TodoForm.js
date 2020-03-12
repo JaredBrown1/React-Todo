@@ -20,7 +20,7 @@ class ToDoForm extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             onChange={this.handleChange}

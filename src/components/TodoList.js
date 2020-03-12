@@ -7,8 +7,8 @@ import ToDo from "./Todo";
 const ToDoList = props => {
   return (
     <div>
-      {props.task.map(task => {
-        return <ToDo task={task.task} id={task.id} />;
+      {props.data.map(item => {
+        return <ToDo key={item.id} item={item} />;
       })}
     </div>
   );
