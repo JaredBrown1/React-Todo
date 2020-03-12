@@ -8,7 +8,13 @@ const ToDoList = props => {
   return (
     <div>
       {props.data.map(item => {
-        return <ToDo key={item.id} item={item} />;
+        return (
+          <ToDo
+            toggleCompleted={props.toggleCompleted}
+            key={item.id}
+            item={item}
+          />
+        );
       })}
     </div>
   );
